@@ -1,11 +1,15 @@
-# installs nvm (Node Version Manager)
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
+const core = require('@actions/core');
+const github = require('@actions/github');
 
-# download and install Node.js (you may need to restart the terminal)
-nvm install 22
-
-# verifies the right Node.js version is in the environment
-node -v # should print `v22.11.0`
-
-# verifies the right npm version is in the environment
-npm -v # should print `10.9.0`
+try {
+  // `who-to-greet` input defined in action metadata file
+  const nameToGreet = core.getInput('who-to-greet');
+  console.log(`Hello ${nameToGreet}!`);
+  const time = (new Date()).toTimeString();
+  core.setOutput("time", time);
+  // Get the JSON webhook payload for the event that triggered the workflow
+  const payload = JSON.stringify(github.context.payload, undefined, 2)
+  console.log(`The event payload: ${payload}`);
+} catch (error) {
+  core.setFailed(error.message);
+}
