@@ -1,488 +1,707 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>demo</title>
-<style>
-/* 重置CSS样式 */
-body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
-    margin: 0;
-    padding: 0;
-    border: none;
-    outline: none;
-}
-h1, h2, h3, h4, h5, h6 {
-    font-size: 100%;
-}
-address, cite, dfn, em, var {
-    font-style: normal;
-}
-code, kbd, pre, samp {
-    font-family: courier new, courier, monospace;
-}
-ul, ol {
-    list-style: none;
-}
-a {
-    text-decoration: none;
-}
-a:hover, a:visited, a:link, a:active {
-    text-decoration: none;
-}
-sup {
-    vertical-align: text-top;
-}
-sub {
-    vertical-align: text-bottom;
-}
-legend {
-    color: #000;
-}
-fieldset, img {
-    border: 0;
-}
-button, input, select, textarea {
-    font-size: 100%;
-}
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-}
-.clear {
-    clear: both;
-    float: none;
-    height: 0;
-    overflow: hidden;
-}
-/* 自定义样式 */
-body {
-    color: #333;
-    font: 12px/1.3 'Arial', 'Microsoft YaHei';
-}
-#pn {
-    width: 550px;
-    height: auto;
-    background: #fff;
-    margin: 0 auto;
-    padding: 20px;
-}
-.list0 {
-    padding: 20px 0;
-    position: relative;
-    border-top: 1px solid #eee;
-}
-.head {
-    width: 60px;
-    float: left;
-}
-.head img {
-    width: 60px;
-    height: 60px;
-}
-.close {
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    color: #696e78;
-    font-size: 14px;
-    text-align: center;
-    line-height: 20px;
-}
-.close:hover {
-    color: #eb7350;
-}
-.content {
-    width: 450px;
-    line-height: 20px;
-    font-size: 14px;
-    margin-left: 70px;
-}
-.name {
-    color: #eb7350;
-}
-.pic {
-    margin: 5px 0;
-}
-.good:after {
-    clear: both;
-    content: '';
-    display: block;
-    width: 0;
-    height: 0;
-    visibility: hidden;
-}
-.good {
-    *zoom: 1;
-}
-.date {
-    float: left;
-    color: #808080;
-}
-.good a {
-    float: right;
-    color: #808080;
-}
-.people {
-    background: #F7F7F7;
-    height: 28px;
-    line-height: 28px;
-    padding-left: 10px;
-    margin: 5px 0;
-}
-.comment:after {
-    clear: both;
-    content: '';
-    display: block;
-    width: 0;
-    height: 0;
-    visibility: hidden;
-}
-.comment {
-    *zoom: 1;
-    padding: 10px 0;
-    border-top: 1px solid #eee;
-}
-.comment-left {
-    width: 30px;
-    float: left;
-    display: inline;
-    margin-right: 10px;
-}
-.comment-left img {
-    width: 30px;
-    height: 30px;
-}
-.comment-right {
-    float: left;
-    width: 410px;
-}
-.comment-text {
-    line-height: 18px;
-}
-.comment-text span {
-    color: #eb7350;
-}
-.comment-date {
-    font-size: 12px;
-    line-height: 14px;
-    color: #ccc;
-    position: relative;
-}
-.comment-zan {
-    position: absolute;
-    right: 40px;
-    bottom: 0;
-    color: #808080;
-}
-.comment-dele {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    color: #808080;
-}
-.hf:after {
-    clear: both;
-    content: '';
-    display: block;
-    width: 0;
-    height: 0;
-    visibility: hidden;
-}
-.hf {
-    *zoom: 1;
-}
-.hf-text {
-    border: 1px solid #eee;
-    display: block;
-    height: 15px;
-    width: 438px;
-    padding: 5px;
-    resize: none;
-    color: #ccc;
-    font-size: 12px;
-}
-.hf-on .hf-text {
-    height: 60px;
-    color: #333;
-    border: 1px solid #ff8140;
-}
-.hf-btn {
-    float: right;
-    width: 65px;
-    height: 26px;
-    background: #f7f7f7;
-    color: #ccc;
-    font-size: 12px;
-    display: none;
-}
-.hf-btn-on {
-    background: #ff8140;
-    color: #fff;
-}
-.hf-nub {
-    float: right;
-    padding: 3px 5px;
-    color: #666;
-    display: none;
-}
-.hf-on .hf-btn {
-    display: inline;
-}
-.hf-on .hf-nub {
-    display: inline;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>皮卡商店</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+        }
+
+        .header {
+            padding: 10px 15px;
+            background: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background: #f5f5f5;
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+        }
+
+        .search-bar input {
+            border: none;
+            background: transparent;
+            width: 100%;
+            padding: 0 10px;
+            font-size: 14px;
+        }
+
+        .search-bar button {
+            background: #1a73e8;
+            color: #fff;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .app-list {
+            padding: 15px;
+        }
+
+        .app-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .app-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            margin-right: 15px;
+        }
+
+        .app-info {
+            flex: 1;
+        }
+
+        .app-name {
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .app-category {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .app-size {
+            font-size: 12px;
+            color: #666;
+            margin-left: 10px;
+        }
+
+        .rating {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-<ul id="pn">
-    <!-- 帖子列表 -->
-    <!-- 帖子1 -->
-    <li class="list0">
-        <a class="close" href="javascript:;">X</a>
-        <div class="head"><img src="https://via.placeholder.com/50" alt=""/></div>
-        <div>
-            <p class="text"><span class="name">Andy：</span>哈哈哈哈哈谁还没个妈～//@我的朋友是个呆B: 饮水机那个蕾丝罩我给跪了//@八卦_我实在是太CJ了:仿佛看到了自己家</p>   
-            <div class="pic"><img src="images/img1.jpg" alt=""/></div>
-            <div class="good"><span class="date">02-14 23:01</span><a class="dzan" href="javascript:;">赞</a></div>
-            <div class="people" total="2980">2980人觉得很赞</div>
-            <div class="comment-list">
-                <!-- 评论1 -->
-                <div class="comment" user="self">
-                    <div class="comment-left"><img src="https://via.placeholder.com/50" alt=""/></div>
-                    <div class="comment-right">
-                        <div class="comment-text"><span class="user">老王：</span>我住隔壁我姓王</div>
-                        <div class="comment-date">02-14 22:00
-                            <a class="comment-zan" href="javascript:;" total="23" my="1">23 取消赞</a>
-                            <a class="comment-dele" href="javascript:;">回复</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- 评论2 -->
-                <div class="comment" user="self">
-                    <div class="comment-left"><img src="https://via.placeholder.com/50" alt=""/></div>
-                    <div class="comment-right">
-                        <div class="comment-text"><span class="user">我：</span>看哭了留卡号吧</div>
-                        <div class="comment-date">02-14 24:00
-                            <a class="comment-zan" href="javascript:;" total="0" my="0">赞</a>
-                            <a class="comment-dele" href="javascript:;">删除</a>
-                        </div>
-                    </div>
-                </div>
+    <div class="header">
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="搜索应用">
+            <button onclick="performSearch()">搜索</button>
+        </div>
+    </div>
+
+    <div class="app-list">
+        <!-- 应用列表项 -->
+        <!-- 示例应用项 -->
+        
+        <div class="app-item">
+            <img src="https://files.catbox.moe/ssyb0b.jpg" alt="导航" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/f/" style="color: black; text-decoration: none;">导航</a>
             </div>
-            <div class="hf">
-                <textarea type="text" class="hf-text" autocomplete="off" maxlength="100">评论…</textarea>
-                <button class="hf-btn">回复</button>
-                <span class="hf-nub">0/100</span>
+                <div class="app-category"></div>
+                <div class="rating">2.0 ★ <span class="app-size">20人觉得很赞</span></div>
             </div>
         </div>
-    </li>
-    <!-- 帖子2 -->
-    <li class="list0">
-        <a class="close" href="javascript:;">X</a>
-        <div class="head"><img src="https://via.placeholder.com/50" alt=""/></div>
-        <div>
-            <p class="text"><span class="name">Andy：</span>哈哈哈哈哈谁还没个妈～//@我的朋友是个呆B: 饮水机那个蕾丝罩我给跪了//@八卦_我实在是太CJ了:仿佛看到了自己家</p
->
-		   		<div class="pic"><img src="images/img1.jpg" alt=""/></div>
-		   		<div class="good"><span class="date">02-14 23:01</span><a class="dzan" href="javascript:;">赞</a></div>
-		   		<div class="people" total="0" style="display: none;"></div>
-		   		<div class="comment-list">
-			   		<div class="comment" user="self">
-			   			<div class="comment-left"><img src="https://via.placeholder.com/50" alt=""/></div>
-			   			<div class="comment-right">
-			   				<div class="comment-text"><span class="user">我：</span>看哭了留卡号吧</div>
-			   				<div class="comment-date">02-14 24:00
-				   				<a class="comment-zan" href="javascript:;" total="286" my="1">286 取消赞</a>
-				   				<a class="comment-dele" href="javascript:;">删除</a>
-			   				</div>
-			   			</div>
-			   		</div>
-			   	</div>
-		   		<div class="hf">
-		   			<textarea type="text" class="hf-text" autocomplete="off" maxlength="100">评论…</textarea>
-		   			<button class="hf-btn">回复</button>
-		   			<span class="hf-nub">0/100</span>
-		   		</div>
-	   		</div>
-	   </li>
-	</ul>
+        
+        <div class="app-item">
+            <img src="https://files.catbox.moe/ssyb0b.jpg" alt="皮卡" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/b/" style="color: black; text-decoration: none;">皮卡网站</a>
+            </div>
+                <div class="app-category"></div>
+                <div class="rating">2.3 ★ <span class="app-size">28人觉得很赞</span></div>
+            </div>
+        </div>
+        
+        <div class="app-item">
+            <img src="https://files.catbox.moe/ssyb0b.jpg" alt="网站" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/abcd/" style="color: black; text-decoration: none;">老网站</a>
+            </div>
+                <div class="app-category"></div>
+                <div class="rating">1.2 ★ <span class="app-size">3人觉得很赞</span></div>
+            </div>
+        </div>
+        
+        <div class="app-item">
+            <img src="https://files.catbox.moe/ssyb0b.jpg" alt="菈妮" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/yes/" style="color: black; text-decoration: none;">菈妮</a>
+            </div>
+                <div class="app-category"></div>
+                <div class="rating">0.5 ★ <span class="app-size">10人觉得很赞</span></div>
+            </div>
+        </div>
+        
+        <div class="app-item">
+            <img src="https://files.catbox.moe/ssyb0b.jpg" alt="天选姬" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/rop/" style="color: black; text-decoration: none;">天选姬</a>
+            </div>
+                <div class="app-category"></div>
+                <div class="rating">0 ★ <span class="app-size">0人觉得很赞</span></div>
+            </div>
+        </div>
+        
+        <div class="app-item">
+            <img src="https://files.catbox.moe/ssyb0b.jpg" alt="广播" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/b41/" style="color: black; text-decoration: none;">广播</a>
+            </div>
+                <div class="app-category"></div>
+                <div class="rating">0 ★ <span class="app-size">0人觉得很赞</span></div>
+            </div>
+        </div>
+        
+        <div class="app-item">
+            <img src="https://files.catbox.moe/ssyb0b.jpg" alt="大全" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/b56/" style="color: black; text-decoration: none;">以图搜图</a>
+            </div>
+                <div class="app-category"></div>
+                <div class="rating">0 ★ <span class="app-size">0人觉得很赞</span></div>
+            </div>
+        </div>
+        
+        <div class="app-item">
+            <img src="https://files.catbox.moe/ssyb0b.jpg" alt="吃瓜" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/b82/" style="color: black; text-decoration: none;">网络吃瓜</a>
+            </div>
+                <div class="app-category"></div>
+                <div class="rating">0 ★ <span class="app-size">0人觉得很赞</span></div>
+            </div>
+        </div>
+        
+        <div class="app-item">
+            <img src="https://files.catbox.moe/ssyb0b.jpg" alt="导航" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/t/" style="color: black; text-decoration: none;">更新软件</a>
+            </div>
+                <div class="app-category"></div>
+                <div class="rating">0 ★ <span class="app-size">1人觉得很赞</span></div>
+            </div>
+        </div>
+        
+        <div class="app-item">
+            <img src="https://files.catbox.moe/ssyb0b.jpg" alt="里番" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/b83/" style="color: black; text-decoration: none;">里番</a>
+            </div>
+                <div class="app-category"></div>
+                <div class="rating">0 ★ <span class="app-size">0人觉得很赞</span></div>
+            </div>
+        </div>
+        
+        <div class="app-item">
+            <img src="https://files.catbox.moe/p8u1al.webp" alt="绿茶VPN" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">绿茶VPN</div>
+                <div class="app-category">实用工具・工具</div>
+                <div class="rating">3.8 ★ <span class="app-size">6.42MB</span></div>
+            </div>
+        </div>
+        
+                <div class="app-item">
+            <img src="https://files.catbox.moe/e42k1v.jpg" alt="魔方加速器" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/x1/" style="color: black; text-decoration: none;">魔方加速器</a>
+                </div>
+                <div class="app-category">实用工具・工具</div>
+                <div class="rating">5.2 ★ <span class="app-size">27.01MB</span></div>
+            </div>
+        </div>
 
-	<script type="text/javascript">		
-		// 在页面加载完后立即执行多个函数。
-		function addloadEvent(func){
-		    var oldonload = window.onload;
-		    if(typeof window.onload != "function"){
-		        window.onload = func;
-		    }
-		    else{
-		        window.onload = function(){
-		            if(oldonload){
-		                oldonload(); 
-		            }
-		            func();
-		        }
-		    }
-		}
-		addloadEvent(b);
-		
-		function b(){
-		    var pn = document.getElementById("pn");
-		    var lists = pn.children;
-		    // 删除当前节点
-		    function remove(node){
-		        node.parentNode.removeChild(node);
-		    }
-			
-		    // 点赞功能
-		    function praisebox(box, el){
-		        var praise = box.getElementsByClassName("people")[0];
-		        var total = parseInt(praise.getAttribute("total"));
-		        var txt = el.innerHTML;
-		        var newtotal;
-		        if(txt == "赞"){
-		            newtotal = total + 1;
-		            praise.innerHTML = newtotal == 1 ? "我觉得很赞" : "我和" + total + "个人觉得很赞";
-		            el.innerHTML = "取消赞";
-		        }
-		        else{
-		            newtotal = total - 1;
-		            praise.innerHTML = newtotal == 0 ? "" : newtotal + "个人觉得很赞";
-		            el.innerHTML = "赞";
-		        }
-		        praise.setAttribute("total", newtotal);
-		        praise.style.display = (newtotal == 0) ? "none" : "block";
-		    }
-			
-		    // 回复评论
-		    function reply(box){
-		        var textarea = box.getElementsByTagName("textarea")[0];
-		        var comment = box.getElementsByClassName("comment-list")[0];
-		        var div = document.createElement("div");
-		        div.className = "comment";
-		        div.setAttribute("user", "self");
-		        var html = '<div class="comment-left"><img src="images/T2.jpg" alt=""/></div>' +
-		    			'<div class="comment-right">' +
-		    				'<div class="comment-text"><span>我：</span>' + textarea.value + '</div>' +
-		    				'<div class="comment-date">' +
-		    				getTime() +
-		    				'<a class="comment-zan" href="javascript:;" total="0" my="0">赞</a>' +
-		    				'<a class="comment-dele" href="javascript:;">删除</a>' +
-		    				'</div>' +
-		    				'</div>';
-		        div.innerHTML = html;
-		        comment.appendChild(div);
-		        textarea.value = "评论…";
-		        textarea.parentNode.className = "hf";
-		    }
-			
-		    // 获取当前时间
-		    function getTime(){
-		        var t = new Date();
-		        var y = t.getFullYear();
-		        var m = t.getMonth() + 1;
-		        var d = t.getDate();
-		        var h = t.getHours();
-		        var mi = t.getMinutes();
-		        m = m < 10 ? "0" + m : m;
-		        d = d < 10 ? "0" + d : d;
-		        h = h < 10 ? "0" + h : h;
-		        mi = mi < 10 ? "0" + mi : mi;
-		        return y + "-" + m + "-" + d + "" + h + ":" + mi;
-		    }
-			
-		    // 评论点赞
-		    function praiseReply(el){
-		        var total = parseInt(el.getAttribute("total"));
-		        var my = parseInt(el.getAttribute("my"));
-		        var newtotal;
-		        if(my == 0){
-		            newtotal = total + 1;
-		            el.setAttribute("total", newtotal);
-		            el.setAttribute("my", 1);
-		            el.innerHTML = newtotal + " 取消赞";
-		        }
-		        else{
-		            newtotal = total - 1;
-		            el.setAttribute("total", newtotal);
-		            el.setAttribute("my", 0);
-		            el.innerHTML = (newtotal == 0) ? " 赞" : newtotal + " 赞";
-		        }
-		    }
-			
-		    // 操作回复
-		    function operateReply(el){
-		        var comment = el.parentNode.parentNode.parentNode;
-		        var box = comment.parentNode.parentNode.parentNode;
-		        var textarea = box.getElementsByTagName("textarea")[0];
-		        var user = comment.getElementsByClassName("user")[0];
-		        var txt = el.innerHTML;
-		        if(txt == "回复"){
-		            textarea.onfocus();
-		            textarea.value = "回复 " + user.innerHTML;
-		            textarea.onkeyup();
-		        }
-		        else{
-		            remove(comment);
-		        }
-		    }
-			
-		    // 遍历所有帖子
-		    for(var i = 0; i < lists.length; i++){
-		        lists[i].onclick = function(e){
-		            var e = e || window.event;
-		            var el = e.srcElement;
-		            if(!el){
-		                el = e.target; // 兼容火狐
-		            }
-		            switch(el.className){
-		                case "close":
-		                    remove(el.parentNode);
-		                    break;
-		                case "dzan":
-		                    praisebox(el.parentNode.parentNode.parentNode, el);
-		                    break;
-		                case "hf-btn hf-btn-on":
-		                    reply(el.parentNode.parentNode.parentNode);
-		                    break;
-		                case "comment-zan":
-		                    praiseReply(el);
-		                    break;
-		                case "comment-dele":
-		                    operateReply(el);
-		                    break;
-		            }
-		        };
-		
-		        var textarea = lists[i].getElementsByClassName("hf-text")[0];
-		        textarea.onfocus = function(){
-		            this.parentNode.className = 'hf hf-on';
-		            this.value = this.value == '评论…' ? '' : this.value;
-		        }
-		        textarea.onblur = function(){
-		            if(this.value == ''){
-		                this.parentNode.className = 'hf';
-		                this.value = '评论…';							
-		            }						
-		        }
-		        textarea.onkeyup = function(){
-		            var len = this.value.length;
-		            var textParentNode = this.parentNode;
-		            var textBtn = textParentNode.children[1];
-		            var textNub = textParentNode.children[2];
-		            if(len == 0 /*|| len > 100*/){
-		                textBtn.className = "hf-btn";
-		            }
-		            else{
-		                textBtn.className = "hf-btn hf-btn-on";
-		                //this.style.color = "#333";	
-		            }
-		            textNub.innerHTML = len + "/100";
-		        }
-		    }
-			
-		}			
-	</script>
+        <div class="app-item">
+            <img src="https://files.catbox.moe/8pqs56.png" alt="旋风加速器" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/x2/" style="color: black; text-decoration: none;">旋风加速器</a>
+                </div>
+                <div class="app-category">实用工具・小工具</div>
+                <div class="rating">4.8 ★ <span class="app-size">17.22MB</span></div>
+            </div>
+        </div>
+    
+        <div class="app-item">
+            <img src="https://files.catbox.moe/r1nrpo.png" alt="起飞VPN" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/x3/" style="color: black; text-decoration: none;">起飞VPN</a>
+                </div>
+                <div class="app-category">实用工具・小工具</div>
+                <div class="rating">4.9 ★ <span class="app-size">76.60MB</span></div>
+            </div>
+        </div>
+    
+        <div class="app-item">
+            <img src="https://files.catbox.moe/7yqkxt.jpg" alt="迷雾通" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/x4/" style="color: black; text-decoration: none;">迷雾通</a>
+                </div>
+                <div class="app-category">实用工具・小工具</div>
+                <div class="rating">2.9 ★ <span class="app-size">29.97MB</span></div>
+            </div>
+        </div>
+    
+        <div class="app-item">
+            <img src="https://files.catbox.moe/88xttt.jpg" alt="ProtonVPN" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/x5/" style="color: black; text-decoration: none;">ProtonVPN</a>
+                </div>
+                <div class="app-category">实用工具・小工具</div>
+                <div class="rating">4.2 ★ <span class="app-size">25.72MB</span></div>
+            </div>
+        </div>
+
+        <div class="app-item">
+            <img src="https://files.catbox.moe/e091xk.png" alt="小美VPN" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/x7/" style="color: black; text-decoration: none;">小美VPN</a>
+                </div>
+                <div class="app-category">实用工具・小工具</div>
+                <div class="rating">3.5 ★ <span class="app-size">20.01MB</span></div>
+            </div>
+        </div>
+
+        <div class="app-item">
+            <img src="https://files.catbox.moe/ipsze9.webp" alt="小米" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/x8/" style="color: black; text-decoration: none;">小米加速器</a>
+                </div>
+                <div class="app-category">实用工具・小工具</div>
+                <div class="rating">3.9 ★ <span class="app-size">49.55MB</span></div>
+            </div>
+        </div>
+
+        <div class="app-item">
+            <img src="https://files.catbox.moe/uglh6m.jpg" alt="快柠檬" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/x9/" style="color: black; text-decoration: none;">快柠檬</a>
+                </div>
+                <div class="app-category">实用工具・小工具</div>
+                <div class="rating">3.7 ★ <span class="app-size">36.69MB</span></div>
+            </div>
+        </div>
+
+        <div class="app-item">
+            <img src="https://files.catbox.moe/7wvpra.jpg" alt="快连" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/x12/" style="color: black; text-decoration: none;">快连</a>
+                </div>
+                <div class="app-category">实用工具・小工具</div>
+                <div class="rating">4.1 ★ <span class="app-size">30.04MB</span></div>
+            </div>
+        </div>
+
+        <div class="app-item">
+            <img src="https://files.catbox.moe/r6dggc.png" alt="汤姆" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/x19/" style="color: black; text-decoration: none;">汤姆加速器</a>
+                </div>
+                <div class="app-category">实用工具・小工具</div>
+                <div class="rating">3.3 ★ <span class="app-size">51.15MB</span></div>
+            </div>
+        </div>
+
+        <div class="app-item">
+            <img src="https://files.catbox.moe/j0oqpv.png" alt="毒舌" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/x32/" style="color: black; text-decoration: none;">毒舌加速器</a>
+                </div>
+                <div class="app-category">实用工具・小工具</div>
+                <div class="rating">5.9 ★ <span class="app-size">26.53MB</span></div>
+            </div>
+        </div>
+        
+        <div class="app-item">
+            <img src="https://files.catbox.moe/f8v9t3.jpg" alt="雪女" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/x6/" style="color: black; text-decoration: none;">美少女万华镜异闻 雪女</a>
+            </div>
+                <div class="app-category">游戏・角色扮演</div>
+                <div class="rating">8.6 ★ <span class="app-size">1.07GB</span></div>
+            </div>
+        </div>
+
+        <div class="app-item">
+            <img src="https://files.catbox.moe/rsasj0.jpg" alt="妹～" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/x17/" style="color: black; text-decoration: none;">妹～团乐的刻～</a>
+            </div>
+                <div class="app-category">游戏・剧情线</div>
+                <div class="rating">5.8 ★ <span class="app-size">141.23MB</span></div>
+            </div>
+        </div>
+
+        <div class="app-item">
+            <img src="https://files.catbox.moe/3f1c6z.png" alt="刘婵" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/x18/" style="color: black; text-decoration: none;">刘婵养成计划</a>
+            </div>
+                <div class="app-category">游戏・角色养成</div>
+                <div class="rating">6.7 ★ <span class="app-size">410.69MB</span></div>
+            </div>
+        </div>
+
+        <div class="app-item">
+            <img src="https://files.catbox.moe/cqzt8e.jpg" alt="与女大生的同居生活" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/x20/" style="color: black; text-decoration: none;">与女大生的同居生活</a>
+            </div>
+                <div class="app-category">游戏・角色养成</div>
+                <div class="rating">4.5 ★ <span class="app-size">210MB</span></div>
+            </div>
+        </div>
+
+        <div class="app-item">
+            <img src="https://files.catbox.moe/5k2ihy.jpg" alt="金庸群侠传X" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/x24/" style="color: black; text-decoration: none;">金庸群侠传X</a>
+            </div>
+                <div class="app-category">游戏・角色养成</div>
+                <div class="rating">3.6 ★ <span class="app-size">1.73GB</span></div>
+            </div>
+        </div>
+
+        <div class="app-item">
+            <img src="https://files.catbox.moe/78tqlg.jpg" alt="别对我妹妹出手" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/x25/" style="color: black; text-decoration: none;">别对我妹妹出手</a>
+            </div>
+                <div class="app-category">游戏・角色养成</div>
+                <div class="rating">2.4 ★ <span class="app-size">613MB</span></div>
+            </div>
+        </div>
+
+        <div class="app-item">
+            <img src="https://files.catbox.moe/8ir1nq.jpg" alt="在淫魔的馆中被榨取" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/x26/" style="color: black; text-decoration: none;">在淫魔的馆中被榨取</a>
+            </div>
+                <div class="app-category">游戏・角色养成</div>
+                <div class="rating">2.1 ★ <span class="app-size">268.9MB</span></div>
+            </div>
+        </div>
+
+        <div class="app-item">
+            <img src="https://files.catbox.moe/fov1mw.jpg" alt="怪物导师" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/x33/" style="color: black; text-decoration: none;">怪兽导师</a>
+            </div>
+                <div class="app-category">游戏・角色养成</div>
+                <div class="rating">2.8 ★ <span class="app-size">1.50GB</span></div>
+            </div>
+        </div>
+
+        <div class="app-item">
+            <img src="https://files.catbox.moe/cwvsno.jpg" alt="玛雅和朋友们" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/x35/" style="color: black; text-decoration: none;">玛雅和朋友们</a>
+            </div>
+                <div class="app-category">游戏・探索</div>
+                <div class="rating">1.8 ★ <span class="app-size">406.86MB</span></div>
+            </div>
+        </div>
+
+        <div class="app-item">
+            <img src="https://files.catbox.moe/i5ndtf.jpg" alt="小妖精" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/x38/" style="color: black; text-decoration: none;">小妖精飞机杯</a>
+            </div>
+                <div class="app-category">游戏・互动触摸</div>
+                <div class="rating">4.5 ★ <span class="app-size">110.89MB</span></div>
+            </div>
+        </div>
+        
+        <div class="app-item">
+            <img src="https://files.catbox.moe/x1v9bh.jpg" alt="MT管理器" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/x39/" style="color: black; text-decoration: none;">MT管理器</a>
+            </div>
+                <div class="app-category">实用・工具</div>
+                <div class="rating">5.0 ★ <span class="app-size">20.43MB</span></div>
+            </div>
+        </div>
+        
+        <div class="app-item">
+            <img src="https://files.catbox.moe/aw0amy.webp" alt="ES文件浏览器" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/x10/" style="color: black; text-decoration: none;">ES文件浏览器</a>
+            </div>
+                <div class="app-category">实用・工具</div>
+                <div class="rating">6.8 ★ <span class="app-size">44.05MB</span></div>
+            </div>
+        </div>
+        
+        <div class="app-item">
+            <img src="https://files.catbox.moe/3sdn38.png" alt="磁力云" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/x11/" style="color: black; text-decoration: none;">磁力云</a>
+                </div>
+                <div class="app-category">实用・工具</div>
+                <div class="rating">6.2 ★ <span class="app-size">33.91MB</span></div>
+            </div>
+        </div>
+
+        <div class="app-item">
+            <img src="https://files.catbox.moe/290hna.jpg" alt="阅读Pro" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/x13/" style="color: black; text-decoration: none;">阅读Pro</a>
+            </div>
+                <div class="app-category">实用・小说</div>
+                <div class="rating">4.2 ★ <span class="app-size">19.06MB</span></div>
+            </div>
+        </div>
+
+        <div class="app-item">
+            <img src="https://files.catbox.moe/oeyekz.png" alt="Cimoc" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/x14/" style="color: black; text-decoration: none;">Cimoc漫画</a>
+            </div>
+                <div class="app-category">实用・漫画</div>
+                <div class="rating">4.3 ★ <span class="app-size">35.28MB</span></div>
+            </div>
+        </div>
+
+        <div class="app-item">
+            <img src="https://files.catbox.moe/wtf192.png" alt="樱花" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://www.295yhw.com/" style="color: black; text-decoration: none;">樱花动漫</a>
+            </div>
+                <div class="app-category">实用・网站</div>
+                <div class="rating">6.2 ★ <span class="app-size"></span></div>
+            </div>
+        </div>
+
+        <div class="app-item">
+            <img src="https://files.catbox.moe/qh80ib.jpg" alt="禁漫" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/x15/" style="color: black; text-decoration: none;">禁漫天堂</a>
+            </div>
+                <div class="app-category">实用・漫画</div>
+                <div class="rating">5.3 ★ <span class="app-size">36.56MB</span></div>
+            </div>
+        </div>
+
+        <div class="app-item">
+            <img src="https://files.catbox.moe/el7o2v.png" alt="哗咔" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/x16/" style="color: black; text-decoration: none;">哗咔</a>
+            </div>
+                <div class="app-category">实用・漫画</div>
+                <div class="rating">4.1 ★ <span class="app-size">12.86MB</span></div>
+            </div>
+        </div>
+
+        <div class="app-item">
+            <img src="https://files.catbox.moe/g9epkm.png" alt="可可影视" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/x21/" style="color: black; text-decoration: none;">可可影视</a>
+            </div>
+                <div class="app-category">实用・影视</div>
+                <div class="rating">5.6 ★ <span class="app-size">27.74MB</span></div>
+            </div>
+        </div>
+
+        <div class="app-item">
+            <img src="https://files.catbox.moe/l4tvze.png" alt="localsend" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/x23/" style="color: black; text-decoration: none;">localsend</a>
+            </div>
+                <div class="app-category">实用・工具</div>
+                <div class="rating">2.8 ★ <span class="app-size">17.20MB</span></div>
+            </div>
+        </div>
+
+        <div class="app-item">
+            <img src="https://files.catbox.moe/38lc9g.jpg" alt="temp-mail" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/x27/" style="color: black; text-decoration: none;">temp-mail</a>
+            </div>
+                <div class="app-category">实用・工具</div>
+                <div class="rating">3.1 ★ <span class="app-size">7.6MB</span></div>
+            </div>
+        </div>
+
+        <div class="app-item">
+            <img src="https://files.catbox.moe/bvq52f.jpg" alt="temp-mail" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/x28/" style="color: black; text-decoration: none;">temp-mail</a>
+            </div>
+                <div class="app-category">实用・工具</div>
+                <div class="rating">3.2 ★ <span class="app-size">16.93MB</span></div>
+            </div>
+        </div>
+
+        <div class="app-item">
+            <img src="https://files.catbox.moe/2t7wmh.png" alt="猫咪社区" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/x29/" style="color: black; text-decoration: none;">猫咪社区</a>
+            </div>
+                <div class="app-category">实用・工具</div>
+                <div class="rating">3.4 ★ <span class="app-size">16.15MB</span></div>
+            </div>
+        </div>
+
+        <div class="app-item">
+            <img src="https://files.catbox.moe/83yucb.jpg" alt="囧次元" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/x31/" style="color: black; text-decoration: none;">囧次元</a>
+            </div>
+                <div class="app-category">实用・工具</div>
+                <div class="rating">3.6 ★ <span class="app-size">29.40MB</span></div>
+            </div>
+        </div>
+
+        <div class="app-item">
+            <img src="https://files.catbox.moe/p8u1al.webp" alt="绿茶VPN" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/x36/" style="color: black; text-decoration: none;">绿茶VPN的问题</a>
+                    </div>
+                <div class="app-category"></div>
+                <div class="rating">3.8 ★ <span class="app-size">6280人觉得很赞</span></div>
+            </div>
+        </div>
+        
+        <div class="app-item">
+            <img src="https://files.catbox.moe/ssyb0b.jpg" alt="电脑VPN" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/x40/" style="color: black; text-decoration: none;">关于电脑VPN的问题</a>
+            </div>
+                <div class="app-category"></div>
+                <div class="rating">3.8 ★ <span class="app-size">350人觉得很赞</span></div>
+            </div>
+        </div>
+        
+        <div class="app-item">
+            <img src="https://files.catbox.moe/2t7wmh.png" alt="" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/x30/" style="color: black; text-decoration: none;">猫咪社区的问题</a>
+            </div>
+                <div class="app-category">实用・工具</div>
+                <div class="rating">2.6 ★ <span class="app-size">280人觉得很赞</span></div>
+            </div>
+        </div>
+        
+<div class="app-item">
+            <img src="https://files.catbox.moe/s23zzp.jpg" alt="美女图" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://files.catbox.moe/p13kjz.txt" style="color: black; text-decoration: none;">经典修仙色文《美女图》</a>
+            </div>
+                <div class="app-category"></div>
+                <div class="rating">8.8 ★ <span class="app-size">19387456280人觉得很赞</span></div>
+            </div>
+        </div>
+
+        <div class="app-item">
+            <img src="https://files.catbox.moe/x1v9bh.jpg" alt="MT管理器" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/x40/" style="color: black; text-decoration: none;">MT管理器的问题</a>
+            </div>
+                <div class="app-category"></div>
+                <div class="rating">5.0 ★ <span class="app-size">21580人觉得很赞</span></div>
+            </div>
+        </div>
+
+        <div class="app-item">
+            <img src="https://files.catbox.moe/hs9qj4.jpg" alt="涩涩" class="app-icon">
+            <div class="app-info">
+                <div class="app-name">
+                    <a href="https://abcd136.github.io/D/" style="color: black; text-decoration: none;">在线观看涩涩视频</a>
+            </div>
+                <div class="app-category"></div>
+                <div class="rating">3.0 ★ <span class="app-size">371580人觉得很赞</span></div>
+            </div>
+        </div>
+        <!-- 更多应用项 -->
+    </div>
+
+    <script>
+        function performSearch() {
+            var input = document.getElementById('searchInput');
+            var filter = input.value.toUpperCase();
+            var appItems = document.getElementsByClassName('app-item');
+
+            for (var i = 0; i < appItems.length; i++) {
+                var appName = appItems[i].getElementsByClassName('app-name')[0].textContent;
+                var appCategory = appItems[i].getElementsByClassName('app-category')[0].textContent;
+                var appSize = appItems[i].getElementsByClassName('app-size')[0].textContent;
+                var appRating = appItems[i].getElementsByClassName('rating')[0].textContent;
+
+                if (appName.toUpperCase().indexOf(filter) > -1 || appCategory.toUpperCase().indexOf(filter) > -1 || appSize.toUpperCase().indexOf(filter) > -1 || appRating.toUpperCase().indexOf(filter) > -1) {
+                    appItems[i].classList.remove('hidden');
+                } else {
+                    appItems[i].classList.add('hidden');
+                }
+            }
+        }
+    </script>
 </body>
 </html>
